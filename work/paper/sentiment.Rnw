@@ -1,0 +1,99 @@
+\documentclass[article,shortnames]{jss}
+
+\usepackage[english]{babel}
+\usepackage{thumbpdf}
+\usepackage{setspace}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{latexsym}
+\usepackage{url}
+\usepackage{upquote}
+
+\usepackage{tikz}
+\usetikzlibrary{arrows,positioning,fit}
+
+\newcommand{\acronym}[1]{\textsc{#1}}
+\newcommand{\class}[1]{\texttt{\textquotesingle#1\textquotesingle}}
+\newcommand{\file}[1]{`\texttt{#1}'}
+
+\author{Mario Annau\\Raiffeisen Bank International AG \And Kurt
+  Hornik\\WU Wirtschaftsuniversit\"at\\Wien \And Kristina
+  Lerman\\University Southern California \And Stefan Theu\ss{}l\\WU
+  Wirtschaftsuniversit\"at\\Wien \And Robert Zinkov\\University of
+  Southern California}
+
+\Plainauthor{Mario Annau, Kurt Hornik, Kristina Lerman, Stefan
+  Theu\ss{}l, Robert Zinkov}
+
+\title{Sentiment Analysis Using \proglang{R}}
+\Plaintitle{Sentiment Analysis Using R}
+\Shorttitle{Sentiment Analysis Using R}
+
+\Abstract{ 
+  
+  TODO
+}
+
+\Keywords{sentiment analysis, natural language processing, culturomics}
+
+%% publication information
+%% NOTE: Typically, this can be left commented and will be filled out
+%% by the technical editor
+%% \Volume{13}
+%% \Issue{9}
+%% \Month{September}
+%% \Year{2004}
+%% \Submitdate{2004-09-29}
+%% \Acceptdate{2004-09-29}
+
+\Address{
+  Mario Annau\\
+  Department of Quant Research\\
+  Raiffeisen Bank International AG\\
+  Am Stadtpark 9,
+  A-1030 Wien, Austria\\
+  E-mail: \email{mario.annau@gmail.com}\\
+  
+  Kurt Hornik, Stefan Theu\ss{}l\\
+  Institute for Statistics and Mathematics\\
+  WU Wirtschaftsuniversit\"at Wien\\
+  Augasse 2--6\\
+  A-1090 Wien, Austria\\
+  E-mail: \email{Stefan.Theussl@wu.ac.at}, \email{Kurt.Hornik@R-project.org}\\
+
+  Kristina Lerman, Robert Zinkov\\
+  Information Sciences Institute\\
+  University of Southern California\\
+  Marina del Rey, CA 90292, U.S.A\\
+  E-mail: \email{zinkov@usc.edu}
+}
+
+%% for those who use Sweave please include the following line (with % symbols):
+%% need no \usepackage{Sweave.sty}
+
+\begin{document}
+
+\section{Introduction}
+\label{sec-introduction}
+
+\section{Background, literature review}
+\label{sec-literature}
+
+
+\section{Implementation}
+\label{sec-implementation}
+
+
+\section{Applications}
+\label{sec-applications}
+
+\section{Computational details}
+\label{sec-computational_details}
+
+\section{Conclusion and Outlook}
+\label{sec-conclusion}
+
+\bibliography{sentiment}
+
+
+\end{document}
