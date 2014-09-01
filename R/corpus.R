@@ -1,4 +1,4 @@
-#' @nord
+#' @noRd
 "getField" <- function(x, ...) UseMethod("getField", x)
 #' Get Meta Data Field in VCorpus as Vector
 #' Get Meta Data Field in VCorpus as Vector
@@ -13,7 +13,7 @@ function(x, fieldname){
 	field
 }
 
-#' @nord
+#' @noRd
 "setField" <- function(x, ...) UseMethod("setField", x)
 #' Set Meta Data Field in VCorpus from Vector
 #' Set Meta Data Field in VCorpus from Vector

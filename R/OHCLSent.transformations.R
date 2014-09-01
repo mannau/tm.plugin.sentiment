@@ -8,13 +8,8 @@
 #' SentVol has.SentVol
 #' @param x xts object 
 #' @seealso \code{quantmod}
-#' @export 
-#' Subj has.Subj 
-#' Polarity has.Polarity 
-#' Pos_Refs_Per_Ref has.Pos_Refs_Per_Ref 
-#' Neg_Refs_Per_Ref has.Neg_Refs_Per_Ref
-#' Senti_Diffs_Per_Ref has.Senti_Diffs_Per_Ref
-#' SentVol has.SentVol
+#' @rdname trans
+#' @export
 `Subj` <-
 function(x)
 {
@@ -23,7 +18,8 @@ function(x)
 	stop('subscript out of bounds: no column name containing "Score"')
 }
 
-#' @nord
+#' @rdname trans
+#' @export
 `has.Subj` <-
 function(x,which=FALSE)
 {
@@ -33,7 +29,8 @@ function(x,which=FALSE)
 	ifelse(which,loc,FALSE)
 }
 
-#' @nord
+#' @rdname trans
+#' @export
 `Polarity` <-
 		function(x)
 {
@@ -42,7 +39,8 @@ function(x,which=FALSE)
 	stop('subscript out of bounds: no column name containing "Polarity"')
 }
 
-#' @nord
+#' @rdname trans
+#' @export
 `has.Polarity` <-
 function(x,which=FALSE)
 {
@@ -52,7 +50,8 @@ function(x,which=FALSE)
 	ifelse(which,loc,FALSE)
 }
 
-#' @nord
+#' @rdname trans
+#' @export
 `Pos_Refs_Per_Ref` <-
 function(x)
 {
@@ -61,7 +60,8 @@ function(x)
 	stop('subscript out of bounds: no column name containing "Pos_Refs_Per_Ref"')
 }
 
-#' @nord
+#' @rdname trans
+#' @export
 `has.Pos_Refs_Per_Ref` <-
 		function(x,which=FALSE)
 {
@@ -71,7 +71,8 @@ function(x)
 	ifelse(which,loc,FALSE)
 }
 
-#' @nord
+#' @rdname trans
+#' @export
 `Neg_Refs_Per_Ref` <-
 		function(x)
 {
@@ -80,7 +81,8 @@ function(x)
 	stop('subscript out of bounds: no column name containing "Neg_Refs_Per_Ref"')
 }
 
-#' @nord
+#' @rdname trans
+#' @export
 `has.Neg_Refs_Per_Ref` <-
 		function(x,which=FALSE)
 {
@@ -90,7 +92,8 @@ function(x)
 	ifelse(which,loc,FALSE)
 }
 
-#' @nord
+#' @rdname trans
+#' @export
 `Senti_Diffs_Per_Ref` <-
 		function(x)
 {
@@ -99,7 +102,8 @@ function(x)
 	stop('subscript out of bounds: no column name containing "Senti_Diffs_Per_Ref"')
 }
 
-#' @nord
+#' @rdname trans
+#' @export
 `has.Senti_Diffs_Per_Ref` <-
 function(x,which=FALSE)
 {
@@ -109,7 +113,8 @@ function(x,which=FALSE)
 	ifelse(which,loc,FALSE)
 }
 
-#' @nord
+#' @rdname trans
+#' @export
 `SentVol` <-
 function(x, prefix = "SEMNT")
 {
@@ -120,7 +125,8 @@ function(x, prefix = "SEMNT")
 	stop(paste('subscript out of bounds: no column name containing"', name, '"'))
 }
 
-#' @nord
+#' @rdname trans
+#' @export
 `has.SentVol` <-
 function(x,which=FALSE, prefix = "SEMNT")
 {
