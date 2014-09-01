@@ -14,13 +14,3 @@ Date: 2013-12-30
 Depends:
     tm,
     quantmod
-Collate:
-    'OHCLSent.transformations.R'
-    'addSentiment.R'
-    'chartSentiment.R'
-    'corpus.R'
-    'data.R'
-    'getRelevant.R'
-    'metaXTS.R'
-    'preprocessCorpus.R'
-    'score.R'
