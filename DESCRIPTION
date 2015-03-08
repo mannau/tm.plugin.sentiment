@@ -3,7 +3,7 @@ Imports:
     slam
 Maintainer: Mario Annau <mario.annau@gmail.com>
 License: GPL-3
-Title: Text corpus sentiment analysis 
+Title: Text corpus sentiment analysis
 Author: Mario Annau <mario.annau@gmail.com>
 Description: tm.plugin.sentiment supports sentiment analysis of text
     corpora. Scoring of text documents, build up of sentiment time
@@ -14,3 +14,13 @@ Date: 2013-12-30
 Depends:
     tm,
     quantmod
+Collate:
+    'OHCLSent.transformations.R'
+    'addSentiment.R'
+    'chartSentiment.R'
+    'corpus.R'
+    'data.R'
+    'getRelevant.R'
+    'metaXTS.R'
+    'preprocessCorpus.R'
+    'score.R'

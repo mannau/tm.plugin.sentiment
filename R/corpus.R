@@ -5,7 +5,7 @@
 #' @param x VCorpus object
 #' @param fieldname character which specifies meta data field name in corpus
 #' @author Mario Annau
-#' @S3method getField VCorpus
+#' @export getField VCorpus
 "getField.VCorpus" <- 
 function(x, fieldname){
 	field <- do.call("c",lapply(x, function(y) meta(y, fieldname)))
@@ -22,7 +22,7 @@ function(x, fieldname){
 #' @param value vector which values should be used
 #' @author Mario Annau
 #' @note vector must be of same length as Corpus
-#' @S3method setField VCorpus
+#' @export setField VCorpus
 "setField.VCorpus" <- 
 function(x, fieldname, value){
 	for(i in 1:length(x)){

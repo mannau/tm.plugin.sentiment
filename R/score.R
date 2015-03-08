@@ -82,15 +82,20 @@
 #' @param x TermDocumentMatrix
 #' @param positive character vector specifying positive terms to be used, defaults to \code{\link{posterms_GI}}
 #' @param negative character vector specifying negative terms to be used, defaults to\code{\link{negterms_GI}}
-#' @S3method polarity TermDocumentMatrix
-#' @S3method polarity DocumentTermMatrix
+#' @rdname polarity
 #' @export
 polarity <- function(x, positive, negative) UseMethod("polarity", x)
+
+#' @rdname polarity
+#' @export
 polarity.TermDocumentMatrix <- function(x, positive = posterms_GI(), negative = negterms_GI() ){
 	pos <- tm_tag_score(x, positive)
 	neg <-  tm_tag_score(x, negative)
 	(pos-neg)/(pos+neg)
 }
+
+#' @rdname polarity
+#' @export
 polarity.DocumentTermMatrix <- function(x, ...) polarity(t(x), ...)
 
 #' Calculate Polarity from Matrix
@@ -98,46 +103,61 @@ polarity.DocumentTermMatrix <- function(x, ...) polarity(t(x), ...)
 #' @param x TermDocumentMatrix
 #' @param positive character vector specifying positive terms to be used, defaults to \code{\link{posterms_GI}}
 #' @param negative character vector specifying negative terms to be used, defaults to\code{\link{negterms_GI}}
-#' @S3method polarity TermDocumentMatrix
-#' @S3method polarity DocumentTermMatrix
+#' @rdname subjectivity
 #' @export
 subjectivity <- function(x, positive, negative) UseMethod("subjectivity", x)
+
+#' @rdname subjectivity
+#' @export
 subjectivity.TermDocumentMatrix <- function(x, positive = posterms_GI(), negative = negterms_GI() ){
 	pos <- tm_tag_score(x, positive)
 	neg <-  tm_tag_score(x, negative)
 	all <- col_sums(x)
 	(pos+neg)/all
 }
+
+#' @rdname subjectivity
+#' @export
 subjectivity.DocumentTermMatrix <- function(x, ...) subjectivity(t(x), ...)
 
 #' Calculate pos_refs_per_ref from Matrix
 #' @author Mario Annau
 #' @param x TermDocumentMatrix
 #' @param positive character vector specifying positive terms to be used, defaults to \code{\link{posterms_GI}}
-#' @S3method pos_refs_per_ref TermDocumentMatrix
-#' @S3method pos_refs_per_ref DocumentTermMatrix
+#' @rdname pos_refs_per_ref
 #' @export
 pos_refs_per_ref <- function(x, positive) UseMethod("pos_refs_per_ref", x)
+
+#' @rdname pos_refs_per_ref
+#' @export
 pos_refs_per_ref.TermDocumentMatrix <- function(x, positive = posterms_GI()){
 	pos <- tm_tag_score(x, positive)
 	all <- col_sums(x)
 	(pos)/(all)
 }
+
+#' @rdname pos_refs_per_ref
+#' @export
 pos_refs_per_ref.DocumentTermMatrix <- function(x, ...) pos_refs_per_ref(t(x), ...)
 
 #' Calculate neg_refs_per_ref from Matrix
 #' @author Mario Annau
 #' @param x TermDocumentMatrix
 #' @param negative character vector specifying negative terms to be used, defaults to  \code{\link{negterms_GI}}
-#' @S3method neg_refs_per_ref TermDocumentMatrix
-#' @S3method neg_refs_per_ref DocumentTermMatrix
+#' @rdname neg_refs_per_ref
 #' @export
 neg_refs_per_ref <- function(x, negative) UseMethod("neg_refs_per_ref", x)
+
+#' @rdname neg_refs_per_ref
+#' @export
 neg_refs_per_ref.TermDocumentMatrix <- function(x, negative = negterms_GI()){
 	neg <- tm_tag_score(x, negative)
 	all <- col_sums(x)
 	(neg)/(all)
 }
+
+#' @rdname neg_refs_per_ref
+#' @export
 neg_refs_per_ref.DocumentTermMatrix <- function(x, ...) neg_refs_per_ref(t(x), ...)
 
 #' Calculate senti_diffs_per_ref from Matrix
@@ -145,16 +165,21 @@ neg_refs_per_ref.DocumentTermMatrix <- function(x, ...) neg_refs_per_ref(t(x), .
 #' @param x TermDocumentMatrix
 #' @param positive character vector specifying positive terms to be used, defaults to \code{\link{posterms_GI}}
 #' @param negative character vector specifying negative terms to be used, defaults to\code{\link{negterms_GI}}
-#' @S3method senti_diffs_per_ref TermDocumentMatrix
-#' @S3method senti_diffs_per_ref DocumentTermMatrix
+#' @rdname senti_diffs_per_ref
 #' @export
 senti_diffs_per_ref <- function(x, positive, negative) UseMethod("senti_diffs_per_ref", x)
+
+#' @rdname senti_diffs_per_ref
+#' @export
 senti_diffs_per_ref.TermDocumentMatrix <- function(x, positive = posterms_GI(), negative = negterms_GI()){
 	pos <- tm_tag_score(x, positive)
 	neg <- tm_tag_score(x, negative)
 	all <- col_sums(x)
 	(pos-neg)/all
 }
+
+#' @rdname senti_diffs_per_ref
+#' @export
 senti_diffs_per_ref.DocumentTermMatrix <- function(x, ...) senti_diffs_per_ref(t(x), ...)
 
 #' Get Positive Terms from General Inquirer
