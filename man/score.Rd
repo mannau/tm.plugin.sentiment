@@ -6,7 +6,7 @@
 Annotate corpus with scores using various functions
 Implementation generates a \code{TermDocumentMatrix} as a first step and applies specified functions to it in order to generate score.}
 \usage{
-score(corpus, control, scoreFUNS, replace = TRUE)
+score(corpus, control, scoreFUNS)
 }
 \arguments{
 \item{corpus}{Text corpus to be annotated}

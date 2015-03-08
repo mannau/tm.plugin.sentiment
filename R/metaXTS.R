@@ -1,7 +1,7 @@
 #' Calculate xts from scored corpus
 #' 
 #' @param corpus Scored corpus from which \code{xts} object should be generated, see \code{\link{score}}
-#' @param fieldnames Fieldnames to be used from \code{DMetaData(corpus)}, defaults to DMetaData(corpus)
+#' @param fieldnames Fieldnames to be used from \code{meta(corpus)}, defaults to meta(corpus)
 #' @param period Period unit of xts time series object to be returned, defaults to "days", see \code{endpoints}
 #' @param k, Period length of xts time series object to be returned, defaults to 1, see \code{endpoints}
 #' @param  aggFUN Aggregation function to be used for meta fields, defaults to mean
@@ -24,17 +24,17 @@ metaXTS <- function(corpus,
 	na.omit = TRUE){
 
 	if(missing(fieldnames)){
-		fieldnames = colnames(DMetaData(corpus))[!colnames(DMetaData(corpus)) == "MetaID"]
+		fieldnames <- colnames(meta(corpus))
 	}
 
-	df <- prescindMeta(corpus, "DateTimeStamp")
-	df <- df[,c("DateTimeStamp", fieldnames)]
+	idx <- do.call(c, lapply(corpus, meta, "datetimestamp"))
+	df <- data.frame(idx, meta(corpus)[, fieldnames])
 	
 	if(na.omit){
 		df <- na.omit(df)
 	}
 
-	xts <- xts(df[,-1], order.by = do.call("c",df[,1]))
+	xts <- xts(df[, -1], order.by = df[, 1])
 	volxts <- xts(rep(1,NROW(xts)), order.by = index(xts))
 	
 	ep <- endpoints(xts, on = period, k = k)
@@ -51,7 +51,6 @@ metaXTS <- function(corpus,
 		xts_agg <- xts(t(as.data.frame(apply(xts, 2, aggFUN))), order.by = index(xts)[ep]) 
 		volxts_agg <- xts(sum(volxts), order.by = index(xts)[ep]) 
 	}
-	
 		   
 	colnames(xts_agg) <- colnames(xts)
 	colnames(volxts_agg) <- "vol"

@@ -10,7 +10,7 @@ metaXTS(corpus, fieldnames, period = "days", k = 1, aggFUN = mean, symbol,
 \arguments{
 \item{corpus}{Scored corpus from which \code{xts} object should be generated, see \code{\link{score}}}
 
-\item{fieldnames}{Fieldnames to be used from \code{DMetaData(corpus)}, defaults to DMetaData(corpus)}
+\item{fieldnames}{Fieldnames to be used from \code{meta(corpus)}, defaults to meta(corpus)}
 
 \item{period}{Period unit of xts time series object to be returned, defaults to "days", see \code{endpoints}}
 

@@ -26,8 +26,7 @@
 #' @export
 `score` <- function(corpus, 
 					control, 
-					scoreFUNS,
-					replace = TRUE){
+					scoreFUNS){
 						
 	if(missing(control)){
 		control = list( 
@@ -64,16 +63,11 @@
 	}
 	
 	dfres <-  as.data.frame(res)
-	meta <- DMetaData(corpus)
-
-	if(replace){
-		MetaID <- meta$MetaID
-		#DMetaData(corpus) <- cbind(MetaID, dfres)
-		meta[,colnames(dfres)] <- dfres
-		DMetaData(corpus) <- meta
-	}else{
-		DMetaData(corpus) <- cbind(DMetaData(corpus), dfres)
-	}
+	meta <- meta(corpus)
+    
+  for(n in colnames(dfres)) {
+    meta(corpus, n) <- dfres[, n]
+  }   
 	corpus
 }
 
@@ -89,8 +83,8 @@ polarity <- function(x, positive, negative) UseMethod("polarity", x)
 #' @rdname polarity
 #' @export
 polarity.TermDocumentMatrix <- function(x, positive = posterms_GI(), negative = negterms_GI() ){
-	pos <- tm_tag_score(x, positive)
-	neg <-  tm_tag_score(x, negative)
+	pos <- tm_term_score(x, positive)
+	neg <-  tm_term_score(x, negative)
 	(pos-neg)/(pos+neg)
 }
 
@@ -110,8 +104,8 @@ subjectivity <- function(x, positive, negative) UseMethod("subjectivity", x)
 #' @rdname subjectivity
 #' @export
 subjectivity.TermDocumentMatrix <- function(x, positive = posterms_GI(), negative = negterms_GI() ){
-	pos <- tm_tag_score(x, positive)
-	neg <-  tm_tag_score(x, negative)
+	pos <- tm_term_score(x, positive)
+	neg <-  tm_term_score(x, negative)
 	all <- col_sums(x)
 	(pos+neg)/all
 }
@@ -131,7 +125,7 @@ pos_refs_per_ref <- function(x, positive) UseMethod("pos_refs_per_ref", x)
 #' @rdname pos_refs_per_ref
 #' @export
 pos_refs_per_ref.TermDocumentMatrix <- function(x, positive = posterms_GI()){
-	pos <- tm_tag_score(x, positive)
+	pos <- tm_term_score(x, positive)
 	all <- col_sums(x)
 	(pos)/(all)
 }
@@ -151,7 +145,7 @@ neg_refs_per_ref <- function(x, negative) UseMethod("neg_refs_per_ref", x)
 #' @rdname neg_refs_per_ref
 #' @export
 neg_refs_per_ref.TermDocumentMatrix <- function(x, negative = negterms_GI()){
-	neg <- tm_tag_score(x, negative)
+	neg <- tm_term_score(x, negative)
 	all <- col_sums(x)
 	(neg)/(all)
 }
@@ -172,8 +166,8 @@ senti_diffs_per_ref <- function(x, positive, negative) UseMethod("senti_diffs_pe
 #' @rdname senti_diffs_per_ref
 #' @export
 senti_diffs_per_ref.TermDocumentMatrix <- function(x, positive = posterms_GI(), negative = negterms_GI()){
-	pos <- tm_tag_score(x, positive)
-	neg <- tm_tag_score(x, negative)
+	pos <- tm_term_score(x, positive)
+	neg <- tm_term_score(x, negative)
 	all <- col_sums(x)
 	(pos-neg)/all
 }
