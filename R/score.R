@@ -85,7 +85,8 @@ polarity <- function(x, positive, negative) UseMethod("polarity", x)
 polarity.TermDocumentMatrix <- function(x, positive = posterms_GI(), negative = negterms_GI() ){
 	pos <- tm_term_score(x, positive)
 	neg <-  tm_term_score(x, negative)
-	(pos-neg)/(pos+neg)
+	all <- (pos+neg)
+  ifelse(all != 0, (pos-neg)/all, 0)
 }
 
 #' @rdname polarity
@@ -107,7 +108,7 @@ subjectivity.TermDocumentMatrix <- function(x, positive = posterms_GI(), negativ
 	pos <- tm_term_score(x, positive)
 	neg <-  tm_term_score(x, negative)
 	all <- col_sums(x)
-	(pos+neg)/all
+  ifelse(all != 0, (pos+neg)/all, 0)
 }
 
 #' @rdname subjectivity
@@ -127,7 +128,7 @@ pos_refs_per_ref <- function(x, positive) UseMethod("pos_refs_per_ref", x)
 pos_refs_per_ref.TermDocumentMatrix <- function(x, positive = posterms_GI()){
 	pos <- tm_term_score(x, positive)
 	all <- col_sums(x)
-	(pos)/(all)
+  ifelse(all != 0, (pos)/(all), 0)
 }
 
 #' @rdname pos_refs_per_ref
@@ -147,7 +148,7 @@ neg_refs_per_ref <- function(x, negative) UseMethod("neg_refs_per_ref", x)
 neg_refs_per_ref.TermDocumentMatrix <- function(x, negative = negterms_GI()){
 	neg <- tm_term_score(x, negative)
 	all <- col_sums(x)
-	(neg)/(all)
+  ifelse(all != 0, (neg)/(all), 0) 
 }
 
 #' @rdname neg_refs_per_ref
@@ -169,7 +170,7 @@ senti_diffs_per_ref.TermDocumentMatrix <- function(x, positive = posterms_GI(), 
 	pos <- tm_term_score(x, positive)
 	neg <- tm_term_score(x, negative)
 	all <- col_sums(x)
-	(pos-neg)/all
+  ifelse(all != 0, (pos-neg)/all, 0)
 }
 
 #' @rdname senti_diffs_per_ref

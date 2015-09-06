@@ -9,8 +9,8 @@ Description: tm.plugin.sentiment supports sentiment analysis of text
     corpora. Scoring of text documents, build up of sentiment time
     series in xts and charting using facilities of quantmod are
     supported.
-Version: 0.6
-Date: 2015-03-08
+Version: 0.6.1
+Date: 2015-09-06
 Depends:
     tm,
     quantmod
